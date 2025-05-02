@@ -3,8 +3,19 @@ import { usePlayers } from '@/features/player/usePlayers'
 import { useInView } from 'react-intersection-observer'
 import { getErrorComponent } from '@/features/error/getErrorComponent'
 import { NavigationBar } from '@/features/navigation/NavigationBar'
+import { useRouter } from 'next/router'
 
 export default function HomePage() {
+  const router = useRouter()
+
+  useEffect(() => {
+    const usernameInLocalStorage = localStorage.getItem('username')
+    // If not logged in, redirect to the login page.
+    if (!usernameInLocalStorage) {
+      router.push('/login')
+    }
+  }, [router])
+
   const {
     data,
     isError,
