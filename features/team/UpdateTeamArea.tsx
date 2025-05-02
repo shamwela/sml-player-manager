@@ -13,7 +13,7 @@ export const UpdateTeamArea = ({ team }: UpdateTeamAreaProps) => {
   const { isOpened, open, close } = useDisclosure()
   const { teams, setTeams } = useTeams()
 
-  const [nameError, setNameError] = useState('')
+  const [nameError, setNameError] = useState<string | null>(null)
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -101,7 +101,14 @@ export const UpdateTeamArea = ({ team }: UpdateTeamAreaProps) => {
 
           <button type='submit'>Update</button>
         </form>
-        <button onClick={close}>Close</button>
+        <button
+          onClick={() => {
+            setNameError(null)
+            close()
+          }}
+        >
+          Close
+        </button>
       </Modal>
     </div>
   )

@@ -9,7 +9,7 @@ import { getTeamFormValues } from './getTeamFromValues'
 export const CreateTeamArea = () => {
   const { isOpened, open, close } = useDisclosure()
   const { teams, setTeams } = useTeams()
-  const [nameError, setNameError] = useState('')
+  const [nameError, setNameError] = useState<string | null>(null)
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -96,7 +96,13 @@ export const CreateTeamArea = () => {
             Create a new team
           </button>
         </form>
-        <button onClick={close} className='mt-4'>
+        <button
+          onClick={() => {
+            setNameError(null)
+            close()
+          }}
+          className='mt-4'
+        >
           Close
         </button>
       </Modal>

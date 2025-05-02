@@ -45,10 +45,7 @@ export default function HomePage() {
       <div className='flex flex-col gap-y-4'>
         <NavigationBar />
         <h1>Players</h1>
-        <p>
-          Infinite scroll with the &quot;react-intersection-observer&quot;
-          package.
-        </p>
+        <p>Please scroll down to see the infinite scroll.</p>
         <ol>
           {pages.map((page) => {
             return page.data.map((player) => {
